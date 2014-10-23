@@ -1,0 +1,17 @@
+<mvc:View
+  height="100%"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <Page title="Логотип">
+    <content>
+      <VBox>
+          <List inset="true">
+            <items>
+              <StandardListItem title="Список курсов" />
+              <StandardListItem title="Мои курсы" />
+            </items>
+          </List>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>
