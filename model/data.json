@@ -1,2 +1,6 @@
 {
+	"Courses":[
+		{"Id": 1, "Name":"Название", "Duration":"Длительность","Level":"Уровень","HasExercise":"Упражнения","Teacher":"Преподаватель","Product":"Продукт","DateStart":"Дата начала","DateFinish":"Дата окончания"},
+		{"Id": 2, "Name":"Название", "Duration":"Длительность","Level":"Уровень","HasExercise":"Упражнения","Teacher":"Преподаватель","Product":"Продукт","DateStart":"Дата начала","DateFinish":"Дата окончания"}
+	]
 }

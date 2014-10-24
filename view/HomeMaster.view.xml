@@ -2,15 +2,34 @@
   height="100%"
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m">
-  <Page title="Логотип">
+  <Page title="{i18n>HomeDetailTitle}">
     <content>
       <VBox>
-          <List inset="true">
+          <List inset="true" >
             <items>
               <StandardListItem title="Список курсов" />
               <StandardListItem title="Мои курсы" />
             </items>
           </List>
+<!-- 
+    <List
+      id="list"
+      mode="{device>/listMode}"
+      select="handleListSelect"
+      items="{/SalesOrderCollection}" >
+      <ObjectListItem
+        type="{device>/listItemType}"
+        press="handleListItemPress"
+        title="{SoId}"
+        number="{GrossAmount}"
+        numberUnit="{CurrencyCode}" >
+        <attributes>
+          <ObjectAttribute text="{BuyerName}" />
+        </attributes>
+      </ObjectListItem>
+    </List>
+ -->
+
       </VBox>
     </content>
   </Page>

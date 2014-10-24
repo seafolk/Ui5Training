@@ -19,7 +19,15 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.splitapp.Component", {
 					viewPath : "view",
 					viewLevel : 1,
 					targetAggregation : "masterPages"
-				}
+				},
+				{
+					pattern : "courses",
+					name : "courses-detail",
+					view : "TrainingCourseDetail",
+					viewPath : "view",
+					viewLevel : 1,
+					targetAggregation : "detailPages"
+				},
 			]
 		}
 	},
@@ -73,8 +81,16 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.splitapp.Component", {
 		var oJSONDataModel = new sap.ui.model.json.JSONModel("model/data.json");
 		oView.setModel(oJSONDataModel);
 
+		//console.log(oJSONDataModel)
+
 		// load the global image source model
 		var oImgModel = new sap.ui.model.json.JSONModel("model/img.json");
+		oView.setModel(oImgModel, "img");
+
+		// load the global image resource model
+		var oImgModel = new sap.ui.model.resource.ResourceModel({
+			bundleUrl : "i18n/messageBunle.properties"
+		});
 		oView.setModel(oImgModel, "img");
 
 		// done
