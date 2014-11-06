@@ -1,0 +1,21 @@
+<mvc:View
+  height="100%"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <Page
+    title="Главная страница"
+    class="marginBoxContent"
+    showNavButton="true" >
+    <headerContent>
+    </headerContent>
+    <subHeader>
+    </subHeader>
+    <content>
+      <VBox>
+        <Text text="Содержание..." />
+      </VBox>
+    </content>
+    <footer>
+    </footer>
+  </Page>
+</mvc:View>

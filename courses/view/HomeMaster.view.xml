@@ -1,0 +1,18 @@
+<mvc:View
+  height="100%"
+  controllerName="view.HomeMaster"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <Page title="{i18n>HomeDetailTitle}">
+    <content>
+      <VBox>
+          <List inset="true" >
+            <items>
+              <StandardListItem title="Список курсов" type="Active" press="listPress" />
+              <StandardListItem title="Календарь курсов" type="Active" press="calendarPress" />
+            </items>
+          </List>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

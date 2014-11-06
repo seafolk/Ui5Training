@@ -1,0 +1,65 @@
+{
+	"courseList": [
+	{
+		"id": "1",
+		"name" : "SAP BW - Хранилище",
+		"duration": "24 часа",
+		"level": "базовый",
+		"teacher": "Батов В.",
+		"product": "BW 7.3",
+		"startDate": "10.02.2014",
+		"endDate":"12.02.2014",
+		"exercises": [ 
+		{
+			"number": "1",
+			"name" : "Упражнение 1",
+			"shortDescription": "Описание первого упражнения",
+			"duration": "2 часа"
+		},
+		{
+			"number": "2",
+			"name" : "Упражнение 2",
+			"shortDescription": "Описание второго упражнения",
+			"duration": "6 часа"
+		}
+		]
+
+	},
+	{
+		"id": "2",
+		"name" : "ABAP for BW",
+		"duration": "16 часа",
+		"level": "базовый",
+		"teacher": "Подгибалов И.",
+		"product": "BW 7.3",
+		"startDate": "16.02.2014",
+		"endDate":"18.02.2014",
+		"execrises": [ 
+		{
+			"number": "1",
+			"name" : "Упражнение 1",
+			"shortDescription": "Описание первого упражнения",
+			"duration": "2 часа"
+		},
+		{
+			"number": "2",
+			"name" : "Упражнение 2",
+			"shortDescription": "Описание второго упражнения",
+			"duration": "6 часа"
+		}
+		]
+	}
+	],
+
+	"myCourses": [
+	{
+		"courseId": "1",
+		"exercises": [
+		{
+			"number":"1",
+			"progress": "50%"
+		}
+		]
+	}
+	]
+}

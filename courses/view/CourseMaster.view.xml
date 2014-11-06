@@ -1,0 +1,25 @@
+<mvc:View
+  height="100%"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  controllerName="view.CourseMaster">
+
+  <Page
+    title="Выберите курс" >
+    <headerContent>
+    </headerContent>
+    <subHeader>
+    </subHeader>
+    <content>
+
+      <List
+        items="{/courseList}" >
+        <StandardListItem title="{name}" description="{startDate}" type="Active" press = "coursesItemPress"/>
+      </List>
+
+    </content>
+    <footer>
+    </footer>
+  </Page>
+
+</mvc:View>

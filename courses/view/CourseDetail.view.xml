@@ -1,0 +1,77 @@
+<mvc:View
+  height="100%"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  controllerName="view.CourseDetail">
+
+  <Page
+    title="Подробная информация о курсе">
+    <headerContent>
+    </headerContent>
+    <subHeader>
+    </subHeader>
+    <content>
+
+        <IconTabBar
+    class="iconTabBarPaddingTop"
+    id="idIconTabBarNoIcons"
+    expanded="{device>/isNoPhone}">
+    <items>
+      <IconTabFilter
+        id="descriptionformContainer"
+        text="Описание">
+      </IconTabFilter>
+      <IconTabFilter
+        text="Программа">
+
+         <Table id="tableExercise"
+                inset="false"
+                items="{exercises}">
+                <columns> 
+                  <Column 
+                    width="8em"> <Text text="№" />
+                  </Column>
+                  <Column 
+                    width="8em"> <Text text="Название" />
+                  </Column>
+                  <Column 
+                    width="8em"> <Text text="Описание" />
+                  </Column>
+                  <Column 
+                    width="8em"> <Text text="Длительность" />
+                  </Column>
+                </columns>
+
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <Text
+                        text="{number}" />
+                      <Text
+                        text="{name}" />
+                      <Text
+                        text="{shortDescription}" />
+                      <Text
+                        text="{duration}" />
+                    </cells>
+                  </ColumnListItem>
+                </items>
+         </Table>
+         
+      </IconTabFilter>
+    </items>
+  </IconTabBar>
+
+    </content>
+    <footer>
+      <Bar>
+        <contentRight>
+          <Button id="idButtonEdit" text="Edit" press="handleFooterBarButtonPress" />
+          <Button id="idButtonSave" text="Save" type="Emphasized" visible="false" press="handleFooterBarButtonPress" />
+          <Button id="idButtonCancel" text="Cancel" visible="false" press="handleFooterBarButtonPress" />
+        </contentRight>
+      </Bar>
+    </footer>
+  </Page>
+  
+</mvc:View>
