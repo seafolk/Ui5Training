@@ -16,13 +16,6 @@ UI5Training - клиентское веб-приложение написанн�
 * Запустить приложение в любом современном браузере
 * [Полное описание смотрите в wiki](https://bitbucket.org/seafolk/ui5training/wiki/Home)
 
-### Contribution guidelines ###
+### Текущий статус проекта ###
 
-* Пишите тесты
-* Проверяйте код
-* Делайте pull requests
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+[Обсуждение макетов интерфейсов](https://bitbucket.org/seafolk/ui5training/issue/3/wiki-alfa)
