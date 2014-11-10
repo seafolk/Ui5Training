@@ -1,27 +1,23 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+UI5Training - клиентское веб-приложение написанное с использованием технологии SAPUI5 и HTML5. Цель данного приложения - предоставить удобный интерфейс для получения новых знаний. Вы можете публиковать накопленные знания в виде электронных курсов и повторно их использовать для обучения.
 
-### What is this repository for? ###
+### Что вы найдете в данном репозитории? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Примеры макетов
+* Исходный код проекта
+* [Для получения дополнительной информации смотрите в wiki](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
+### Что нужно для установки? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Скачать репозиторий на сервер
+* Запустить приложение в любом современном браузере
+* [Полное описание смотрите в wiki](https://bitbucket.org/tutorials/markdowndemo)
 
 ### Contribution guidelines ###
 
 * Writing tests
 * Code review
-* Other guidelines
 
 ### Who do I talk to? ###
 
