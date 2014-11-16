@@ -14,33 +14,6 @@ sap.ui.core.UIComponent.extend("app.courses.Component", {
 			routes : [
 				{
 					pattern : "",
-					name : "home-master",
-					view : "HomeMaster",
-					viewPath : "view",
-					viewLevel : 1,
-					targetAggregation : "masterPages",
-					subroutes : [
-						{
-							pattern : "",
-							name : "home-detail",
-							view : "HomeDetail",
-							viewPath : "view",
-							viewLevel : 1,
-							targetAggregation : "detailPages"
-						}
-					]
-				},
-				// delete
-				{
-					pattern : "courses",
-					name : "courses-detail",
-					view : "TrainingCourseDetail",
-					viewPath : "view",
-					viewLevel : 1,
-					targetAggregation : "detailPages"
-				},
-				{
-					pattern : "course",
 					name : "course",
 					view : "CourseMaster",
 					viewPath : "view",
@@ -48,7 +21,7 @@ sap.ui.core.UIComponent.extend("app.courses.Component", {
 					targetAggregation : "masterPages",
 					subroutes : [
 						{
-							pattern : "course/{viewId}",
+							pattern : "{viewId}",
 							name : "course-view",
 							view : "CourseDetail",
 							viewPath : "view",

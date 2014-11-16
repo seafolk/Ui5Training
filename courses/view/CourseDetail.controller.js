@@ -15,7 +15,7 @@ sap.ui.controller("view.CourseDetail", {
 
 		this.getView().bindElement("/courseList/" + sViewId);
 		// Set the initial form to be the display one
-    	this._showFormFragment("CourseDisplay");
+    	this._showFormFragment("CourseDisplay", this.getView().getBindingContext().sPath);
 	},
 
 	onBackButtonPress: function(oEvent) {
@@ -26,7 +26,7 @@ sap.ui.controller("view.CourseDetail", {
 	 *	DESCRIPTION FORM
 	 **/
 	_formFragments: {},
-	_getFormFragment: function (sFragmentName) {
+	_getFormFragment: function (sFragmentName, sPath) {
 	    var oFormFragment = this._formFragments[sFragmentName];
 
 	    if (!oFormFragment) {
@@ -34,14 +34,14 @@ sap.ui.controller("view.CourseDetail", {
 	        "view." + sFragmentName
 	      );
 	      this._formFragments[sFragmentName] = oFormFragment;
-	      oFormFragment.bindElement(
-	      		this.getView().getBindingContext().sPath
-	      );
 	    }
+	    // refresh binding
+	    oFormFragment.bindElement(sPath);
+	    
 	    return oFormFragment;
 	  },
-  _showFormFragment : function (sFragmentName) {
-    oForm = this._getFormFragment(sFragmentName);
+  _showFormFragment : function (sFragmentName, sPath) {
+    oForm = this._getFormFragment(sFragmentName, sPath);
     var oContainer = this.getView().byId("descriptionformContainer");
     oContainer.removeAllContent();
     oContainer.insertContent(oForm);
@@ -57,6 +57,6 @@ sap.ui.controller("view.CourseDetail", {
     oView.byId("idButtonCancel").setVisible(bEditAction);
 
     // Set the right form type
-    oForm = this._showFormFragment(bEditAction ? "CourseChange" : "CourseDisplay");
+    oForm = this._showFormFragment(bEditAction ? "CourseChange" : "CourseDisplay", this.getView().getBindingContext().sPath);
   }
 });
