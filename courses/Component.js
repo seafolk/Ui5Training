@@ -85,6 +85,12 @@ sap.ui.core.UIComponent.extend("app.courses.Component", {
 
 		//console.log(oJSONDataModel)
 
+		// set i18n model
+		var i18nModel = new sap.ui.model.resource.ResourceModel({
+			bundleUrl : "i18n/messageBundle.properties"
+		});
+		oView.setModel(i18nModel, "i18n");
+		
 		// load the global image source model
 		var oImgModel = new sap.ui.model.json.JSONModel("model/img.json");
 		oView.setModel(oImgModel, "img");

@@ -2,11 +2,11 @@
 	"courseList": [
 	{
 		"id": "1",
-		"name" : "SAP BW - Хранилище",
-		"duration": "24 часа",
+		"name" : "HTML5/CSS3",
+		"duration": "16 часов",
 		"level": "базовый",
-		"teacher": "Батов В.",
-		"product": "BW 7.3",
+		"teacher": "Никитин С.",
+		"product": "SAPUI5",
 		"startDate": "10.02.2014",
 		"endDate":"12.02.2014",
 		"exercises": [ 
@@ -27,14 +27,14 @@
 	},
 	{
 		"id": "2",
-		"name" : "ABAP for BW",
-		"duration": "16 часа",
-		"level": "базовый",
-		"teacher": "Подгибалов И.",
-		"product": "BW 7.3",
+		"name" : "SAPUI5",
+		"duration": "16 часов",
+		"level": "расширенный",
+		"teacher": "Никитин С.",
+		"product": "SAPUI5",
 		"startDate": "16.02.2014",
 		"endDate":"18.02.2014",
-		"execrises": [ 
+		"exercises": [ 
 		{
 			"number": "1",
 			"name" : "Упражнение 1",
@@ -50,7 +50,6 @@
 		]
 	}
 	],
-
 	"myCourses": [
 	{
 		"courseId": "1",

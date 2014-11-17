@@ -1,3 +1,5 @@
+jQuery.sap.require("sap.m.MessageBox");
+
 sap.ui.controller("view.CourseDetail", {
 
 	onInit: function(){
@@ -46,6 +48,7 @@ sap.ui.controller("view.CourseDetail", {
     oContainer.removeAllContent();
     oContainer.insertContent(oForm);
   },
+  /* TODO
   handleFooterBarButtonPress: function (oEvent) {
     // Derive action from the button pressed
     var bEditAction = /idButtonEdit$/.test(oEvent.getSource().getId()),
@@ -58,5 +61,29 @@ sap.ui.controller("view.CourseDetail", {
 
     // Set the right form type
     oForm = this._showFormFragment(bEditAction ? "CourseChange" : "CourseDisplay", this.getView().getBindingContext().sPath);
+  },
+  */
+  handleAddToMyCourses: function(oEvent){
+  	var oCourse = this.getView().getModel().getProperty(this.getView().getBindingContext().sPath);
+
+  	/*
+  		TODO 
+  		добавить курс в коллекцию курсов пользователя, отправить запрос на сервер
+  	*/
+
+  	var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+    sap.m.MessageBox.show(
+      'Курс "' + oCourse.name + '" добавлен в Ваш список курсов.', {
+        icon: sap.m.MessageBox.Icon.QUESTION,
+        title: "Статус выполнения",
+        actions: ["Перейти в мои курсы", "Закрыть"],
+        styleClass: bCompact? "sapUiSizeCompact" : "",
+        onClose : function(oAction) { 
+	        if ( oAction === "Перейти в мои курсы" ) {
+	          location.href = '../mycourses/index.html'
+	        }
+	    },
+      }
+    );
   }
 });
