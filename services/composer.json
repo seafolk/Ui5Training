@@ -1,6 +1,0 @@
-{
-  "require" : {
-  	"silex/silex": "~1.2",
-    "parse/php-sdk" : "1.0.*"
-  }
-}
