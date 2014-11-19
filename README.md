@@ -10,6 +10,6 @@ UI5Training - клиентское веб-приложение, написанн
 
 ### Что нужно для установки? ###
 
-* Скачать код проекта на сервер
-* Запустить приложение в любом современном браузере
-* [Полное описание смотрите в wiki](https://bitbucket.org/seafolk/ui5training/wiki/Home)
+* Скачать код проекта
+* Следуя [инструкции](https://github.com/seafolk/Ui5Training/wiki/%D0%9A%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%3F) запустить приложение в любом браузере
+* [Полное описание смотрите в wiki](https://github.com/seafolk/Ui5Training/wiki)
