@@ -1,0 +1,18 @@
+http://localhost:52999/ui5training.svc/Courses('NTQ2ZTAyYjcxYjE0NjFkNDEwMDhmZGQw')?$expand=Teacher
+
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><entry xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xml:base="http://localhost:52999/ui5training.svc/Courses" xmlns="http://www.w3.org/2005/Atom"><id>http://localhost:52999/ui5training.svc/Courses('NTQ2ZTAyYjcxYjE0NjFkNDEwMDhmZGQw')</id><category scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" term="$scope.Types.Course"></category><link href="Courses('NTQ2ZTAyYjcxYjE0NjFkNDEwMDhmZGQw')" rel="edit" title="Course"></link><link href="Courses('NTQ2ZTAyYjcxYjE0NjFkNDEwMDhmZGQw')/Teacher" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/Teacher" type="application/atom+xml;type=entry"><m:inline><entry><id>http://localhost:52999/ui5training.svc/Users('NTQ2ZTAyYjcxYjE0NjFkNDEwMDhmZGNm')</id><category scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" term="$scope.Types.User"></category><link href="Users('NTQ2ZTAyYjcxYjE0NjFkNDEwMDhmZGNm')" rel="edit" title="User"></link><link href="Users('NTQ2ZTAyYjcxYjE0NjFkNDEwMDhmZGNm')/Courses" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/Courses" type="application/atom+xml;type=feed"></link><title></title><updated>2014-11-20T15:19:54.770Z</updated><author><name></name></author><content type="application/xml"><m:properties><d:Id>NTQ2ZTAyYjcxYjE0NjFkNDEwMDhmZGNm</d:Id><d:LoginName>nikitin</d:LoginName><d:FullName>Никитин Сергей</d:FullName><d:Email>nikitin.sergey@company.com</d:Email></m:properties></content></entry></m:inline></link><title></title><updated>2014-11-20T15:19:54.771Z</updated><author><name></name></author><content type="application/xml"><m:properties><d:Id>NTQ2ZTAyYjcxYjE0NjFkNDEwMDhmZGQw</d:Id><d:Name>HTML5/CSS3</d:Name><d:Duration m:type="Edm.Int32">960</d:Duration><d:Level>базовый</d:Level><d:Product>SAPUI5</d:Product><d:StartDate m:type="Edm.DateTime">2014-10-09T20:00:00.000</d:StartDate><d:EndDate m:type="Edm.DateTime">2014-10-11T20:00:00.000</d:EndDate>
+
+	<d:Exercises m:type="Collection($scope.Types.Exercise)">
+		<m:item type="$scope.Types.Exercise">
+			<d:Name>Упражнение 1</d:Name>
+			<d:ShortDescription>Описание первого упражнения</d:ShortDescription>
+			<d:Duration m:type="Edm.Int32">120</d:Duration>
+		</m:item>
+		<m:item type="$scope.Types.Exercise">
+			<d:Name>Упражнение 2</d:Name>
+			<d:ShortDescription>Описание второго упражнения</d:ShortDescription>
+			<d:Duration m:type="Edm.Int32">60</d:Duration>
+		</m:item>
+	</d:Exercises>
+</m:properties></content></entry>

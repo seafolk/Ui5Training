@@ -5,9 +5,11 @@ sap.ui.controller("view.CourseMaster", {
 	},
 
 	coursesItemPress: function(oEvent){
-		var context = oEvent.getSource().getBindingContext();
+		var context = oEvent.getSource().getBindingContext(),
+			oCourse = context.oModel.getProperty(context.sPath);
+
 		this.router.navTo("course-view", {
-			viewId: context.sPath.split("/courseList/")[1]
+			courseId: oCourse.Id
 		});
 	},
 

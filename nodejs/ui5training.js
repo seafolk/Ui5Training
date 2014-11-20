@@ -1,7 +1,7 @@
 require('odata-server');
 
 var contextType = require('./ui5training/context.js');
-var context = new $news.Types.NewsContext({
+var context = new $scope.Types.TrainingContext({
     name: 'mongoDB',
     databaseName: 'ui5training',
     dbCreation: $data.storageProviders.DbCreationType.DropAllExistingTables
@@ -12,18 +12,14 @@ context.onReady(function(db){
         console.log('Test data upload successful. ', count, 'items inserted.');
         console.log('Starting Ui5Training OData server.');
 
-        /*$data.createODataServer({
-            type: contextType,
-            database: 'newsreader',
-        }, '/newsreader.svc', 52999, 'localhost');*/
-        
-        var connect = require('connect');
+        //var connect = require('connect');
+        var connect = require('odata-server/node_modules/connect');
         var app = connect();
         
         app.use('/ui5training.svc', $data.ODataServer({
             type: contextType,
             CORS: true,
-            database: 'newsreader',
+            database: 'ui5training',
             responseLimit: 100,
             basicAuth: function(username, password){
                 if (username == 'admin'){

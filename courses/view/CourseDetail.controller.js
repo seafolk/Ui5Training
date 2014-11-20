@@ -9,15 +9,19 @@ sap.ui.controller("view.CourseDetail", {
 
 	_handleRouteMatched : function (evt) {
 		var param = evt.getParameter("name"),
-			sViewId = evt.getParameter("arguments").viewId;
+			sCourseId = evt.getParameter("arguments").courseId;
 
 		if ("course-view" !== param) {
 			return;
 		}
 
-		this.getView().bindElement("/courseList/" + sViewId);
+		var sPath = "/Courses('" + sCourseId +"')";
+		this.getView().bindElement({
+			path: sPath,
+	    	parameters: {expand: "Teacher"}
+	    });
 		// Set the initial form to be the display one
-    	this._showFormFragment("CourseDisplay", this.getView().getBindingContext().sPath);
+    	this._showFormFragment("CourseDisplay", sPath);
 	},
 
 	onBackButtonPress: function(oEvent) {
@@ -37,9 +41,13 @@ sap.ui.controller("view.CourseDetail", {
 	      );
 	      this._formFragments[sFragmentName] = oFormFragment;
 	    }
-	    // refresh binding
-	    oFormFragment.bindElement(sPath);
-	    
+
+	    // refresh binding 
+	    // FIXME повторный вызов сервиса
+	    //oFormFragment.bindElement(sPath);
+
+		console.log(this.getView().getModel())
+
 	    return oFormFragment;
 	  },
   _showFormFragment : function (sFragmentName, sPath) {
@@ -73,7 +81,7 @@ sap.ui.controller("view.CourseDetail", {
 
   	var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
     sap.m.MessageBox.show(
-      'Курс "' + oCourse.name + '" добавлен в Ваш список курсов.', {
+      'Курс "' + oCourse.Name + '" добавлен в Ваш список курсов.', {
         icon: sap.m.MessageBox.Icon.QUESTION,
         title: "Статус выполнения",
         actions: ["Перейти в мои курсы", "Закрыть"],

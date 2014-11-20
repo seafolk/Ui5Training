@@ -21,7 +21,7 @@ sap.ui.core.UIComponent.extend("app.courses.Component", {
 					targetAggregation : "masterPages",
 					subroutes : [
 						{
-							pattern : "{viewId}",
+							pattern : "{courseId}",
 							name : "course-view",
 							view : "CourseDetail",
 							viewPath : "view",
@@ -78,28 +78,16 @@ sap.ui.core.UIComponent.extend("app.courses.Component", {
 			viewData : { component : this }
 		});
 
-		// set navigation model
 		// load the global data model
-		var oJSONDataModel = new sap.ui.model.json.JSONModel("model/data.json");
-		oView.setModel(oJSONDataModel);
-
-		//console.log(oJSONDataModel)
+		//var oModel = new sap.ui.model.json.JSONModel("model/data.json");
+		var oModel = new sap.ui.model.odata.ODataModel("http://localhost:52999/ui5training.svc");
+		oView.setModel(oModel);
 
 		// set i18n model
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
 			bundleUrl : "i18n/messageBundle.properties"
 		});
 		oView.setModel(i18nModel, "i18n");
-		
-		// load the global image source model
-		var oImgModel = new sap.ui.model.json.JSONModel("model/img.json");
-		oView.setModel(oImgModel, "img");
-
-		// load the global image resource model
-		var oImgModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "i18n/messageBunle.properties"
-		});
-		oView.setModel(oImgModel, "img");
 
 		// done
 		return oView;

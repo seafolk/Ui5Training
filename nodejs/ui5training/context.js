@@ -3,7 +3,7 @@ $data.Class.define("$scope.Types.Course", $data.Entity, null, {
     Name: { type: "string" },
     Duration: {type: "int"},
     Level: { type: "string" },
-    Teacher: { type: "$scope.Types.User" },
+    Teacher: { type: "$scope.Types.User", inverseProperty: "Courses" },
     Product: { type: "string" },
     StartDate: { type: "datetime" },
     EndDate: { type: "datetime" },
@@ -11,7 +11,6 @@ $data.Class.define("$scope.Types.Course", $data.Entity, null, {
 }, null);
 
 $data.Class.define("$scope.Types.Exercise", $data.Entity, null, {
-    Id: { type: "id", key: true, computed: true },
     Name: { type: "string" },
     ShortDescription:  { type: "string" },
     Duration: { type: "int" }
@@ -20,33 +19,53 @@ $data.Class.define("$scope.Types.Exercise", $data.Entity, null, {
 $data.Class.define("$scope.Types.User", $data.Entity, null, {
     Id: { type: "id", key: true, computed: true },
     LoginName: { type: "string" },
+    FullName: { type: "string" },
     Email: { type: "string" },
-    Profile: { type: "$scope.Types.UserProfile", inverseProperty: "User" }
+    Courses: { type: "Array", elementType: "$scope.Types.Course", inverseProperty: "Teacher" }
+    //Profile: { type: "$scope.Types.UserProfile", inverseProperty: "User" }
 }, null);
-
+/*
 $data.Class.define("$scope.Types.UserProfile", $data.Entity, null, {
     Id: { type: "id", key: true, computed: true },
     FullName: { type: "string" },
-    Bio: { type: "string" },
     Avatar: { type: "blob" },
     Location: { type: "$scope.Types.Location" },
     Birthday: { type: "date" },
     User: { type: "$scope.Types.User", inverseProperty: "Profile", required: true }
 }, null);
 
-$data.Class.define("$news.Types.Location", $data.Entity, null, {
+$data.Class.define("$scope.Types.Location", $data.Entity, null, {
     Address: { type: "string" },
     City: { type: "string" },
     Zip: { type: "int" },
     Country: { type: "string" }
 }, null);
+*/
 
-$scope.Types.scopeContext.generateTestData = function (context, callBack) {
-    var usr1 = new $scope.Types.User({ LoginName: "nikitin", Email: "nikitin.sergey@company.com", Profile: new $scope.Types.UserProfile({ FullName: "Nikitin Sergey", Birthday: new Date(Date.parse("1975/01/01")), Location: new $scope.Types.Location({ Zip: 2840, City: 'City1', Address: 'Address6', Country: 'Country1' }) }) });
-    var usr2 = new $scope.Types.User({ LoginName: "Usr2", Email: "usr2@company.com", Profile: new $scope.Types.UserProfile({ FullName: "Full Name", Birthday: new Date(Date.parse("1976/02/01")), Location: new $scope.Types.Location({ Zip: 1117, City: 'City2', Address: 'Address7', Country: 'Country2' }) }) });
-    var usr3 = new $scope.Types.User({ LoginName: "Usr3", Email: "usr3@company.com", Profile: new $scope.Types.UserProfile({ FullName: "Full Name1", Birthday: new Date(Date.parse("1977/03/01")), Location: new $scope.Types.Location({ Zip: 1115, City: 'City3', Address: 'Address8', Country: 'Country3' }) }) });
-    var usr4 = new $scope.Types.User({ LoginName: "Usr4", Email: "usr4@company.com", Profile: new $scope.Types.UserProfile({ FullName: "Full Name1", Birthday: new Date(Date.parse("1978/04/01")), Location: new $scope.Types.Location({ Zip: 1211, City: 'City4', Address: 'Address9', Country: 'Country4' }) }) });
-    var usr5 = new $scope.Types.User({ LoginName: "Usr5", Email: "usr5@company.com", Profile: new $scope.Types.UserProfile({ FullName: "Full Name2", Birthday: new Date(Date.parse("1979/05/01")), Location: new $scope.Types.Location({ Zip: 3451, City: 'City5', Address: 'Address0', Country: 'Country5' }) }) });
+$data.Class.define("$scope.Types.TrainingContext", $data.EntityContext, null, {
+    Courses: { type: $data.EntitySet, elementType: $scope.Types.Course, roles: ['anonymous'] },
+    Users: { type: $data.EntitySet, elementType: $scope.Types.User }
+    //UserProfiles: { type: $data.EntitySet, elementType: $scope.Types.UserProfile }
+}, null);
+
+$scope.Types.TrainingContext.generateTestData = function (context, callBack) {
+    var usr1 = new $scope.Types.User({
+        LoginName: "nikitin", 
+        Email: "nikitin.sergey@company.com",
+        FullName: "Никитин Сергей"
+        /*
+        ,Profile: new $scope.Types.UserProfile({
+                FullName: "Никитин Сергей", 
+                Birthday: new Date(Date.parse("1975/01/01")),
+                Location: new $scope.Types.Location({
+                    Zip: 2840,
+                    City: 'City1',
+                    Address: 'Address6',
+                    Country: 'Country1'
+                })
+        })
+*/
+    });
 
     context.Courses.add(
         new $scope.Types.Course({
@@ -87,4 +106,4 @@ $scope.Types.scopeContext.generateTestData = function (context, callBack) {
     });
 };
 
-module.exports = exports = $scope.Types.scopeContext;
+module.exports = exports = $scope.Types.TrainingContext;

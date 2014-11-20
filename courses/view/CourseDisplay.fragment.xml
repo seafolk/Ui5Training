@@ -25,13 +25,13 @@
         <f:formContainers>
           <f:FormContainer>
             <f:formElements>
-              <f:FormElement label="Name"><f:fields><Text text="{name}" /></f:fields></f:FormElement>
-              <f:FormElement label="Duration"><f:fields><Text text="{duration}" /></f:fields></f:FormElement>
-              <f:FormElement label="Level"><f:fields><Text text="{level}" /></f:fields></f:FormElement>
-              <f:FormElement label="Teacher"><f:fields><Text text="{teacher}" /></f:fields></f:FormElement>
-              <f:FormElement label="Product"><f:fields><Text text="{product}" /></f:fields></f:FormElement>
-              <f:FormElement label="Start"><f:fields><Text text="{startDate}" /></f:fields></f:FormElement>
-              <f:FormElement label="End"><f:fields><Text text="{endDate}" /></f:fields></f:FormElement>
+              <f:FormElement label="Name"><f:fields><Text text="{Name}" /></f:fields></f:FormElement>
+              <f:FormElement label="Duration"><f:fields><Text text="{Duration}" /></f:fields></f:FormElement>
+              <f:FormElement label="Level"><f:fields><Text text="{Level}" /></f:fields></f:FormElement>
+              <f:FormElement label="Teacher"><f:fields><Text text="{Teacher/FullName}" /></f:fields></f:FormElement>
+              <f:FormElement label="Product"><f:fields><Text text="{Product}" /></f:fields></f:FormElement>
+              <f:FormElement label="Start"><f:fields><Text text="{StartDate}" /></f:fields></f:FormElement>
+              <f:FormElement label="End"><f:fields><Text text="{EndDate}" /></f:fields></f:FormElement>
             </f:formElements>
           </f:FormContainer>
         </f:formContainers>

@@ -13,8 +13,8 @@
     <content>
 
       <List
-        items="{/courseList}" >
-        <StandardListItem title="{name}" description="{startDate}" type="Active" press = "coursesItemPress"/>
+        items="{/Courses}" >
+        <StandardListItem title="{Name}" description="{StartDate}" type="Active" press = "coursesItemPress"/>
       </List>
 
     </content>

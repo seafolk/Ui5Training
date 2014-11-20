@@ -1,51 +1,51 @@
 {
-	"courseList": [
+	"Courses": [
 	{
-		"id": "1",
-		"name" : "HTML5/CSS3",
-		"duration": "16 часов",
-		"level": "базовый",
-		"teacher": "Никитин С.",
-		"product": "SAPUI5",
-		"startDate": "10.02.2014",
-		"endDate":"12.02.2014",
-		"exercises": [ 
+		"Id": "1",
+		"Name" : "HTML5/CSS3",
+		"Duration": 960,
+		"Level": "базовый",
+		"Teacher": {"Id":"10", "Email": "nikitin.sergey@company.com", "LoginName": "nikitin", "FullName":"Сергей Никитин"},
+		"Product": "SAPUI5",
+		"StartDate": "2014-10-09T10:00:00.000",
+		"EndDate": "2014-10-09T18:00:00.000",
+		"Exercises": [ 
 		{
-			"number": "1",
-			"name" : "Упражнение 1",
-			"shortDescription": "Описание первого упражнения",
-			"duration": "2 часа"
+			"Number": "1",
+			"Name" : "Упражнение 1",
+			"ShortDescription": "Описание первого упражнения",
+			"Duration": "2 часа"
 		},
 		{
-			"number": "2",
-			"name" : "Упражнение 2",
-			"shortDescription": "Описание второго упражнения",
-			"duration": "6 часа"
+			"Number": "2",
+			"Name" : "Упражнение 2",
+			"ShortDescription": "Описание второго упражнения",
+			"Duration": "6 часа"
 		}
 		]
 
 	},
 	{
-		"id": "2",
-		"name" : "SAPUI5",
-		"duration": "16 часов",
-		"level": "расширенный",
-		"teacher": "Никитин С.",
-		"product": "SAPUI5",
-		"startDate": "16.02.2014",
-		"endDate":"18.02.2014",
-		"exercises": [ 
+		"Id": "2",
+		"Name" : "SAPUI5",
+		"Duration": "16 часов",
+		"Level": "расширенный",
+		"Teacher": "Никитин С.",
+		"Product": "SAPUI5",
+		"StartDate": "2014-10-09T10:00:00.000",
+		"EndDate": "2014-10-09T18:00:00.000",
+		"Exercises": [ 
 		{
-			"number": "1",
-			"name" : "Упражнение 1",
-			"shortDescription": "Описание первого упражнения",
-			"duration": "2 часа"
+			"Number": "1",
+			"Name" : "Упражнение 1",
+			"ShortDescription": "Описание первого упражнения",
+			"Duration": "2 часа"
 		},
 		{
-			"number": "2",
-			"name" : "Упражнение 2",
-			"shortDescription": "Описание второго упражнения",
-			"duration": "6 часа"
+			"Number": "2",
+			"Name" : "Упражнение 2",
+			"ShortDescription": "Описание второго упражнения",
+			"Duration": "6 часа"
 		}
 		]
 	}
