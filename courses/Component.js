@@ -1,4 +1,6 @@
 jQuery.sap.declare("app.courses.Component");
+jQuery.sap.require("app.courses.util.Config");
+jQuery.sap.require("app.courses.model.Courses");
 
 sap.ui.core.UIComponent.extend("app.courses.Component", {
 
@@ -21,7 +23,7 @@ sap.ui.core.UIComponent.extend("app.courses.Component", {
 					targetAggregation : "masterPages",
 					subroutes : [
 						{
-							pattern : "{courseId}",
+							pattern : "{course}",
 							name : "course-view",
 							view : "CourseDetail",
 							viewPath : "view",
@@ -78,9 +80,9 @@ sap.ui.core.UIComponent.extend("app.courses.Component", {
 			viewData : { component : this }
 		});
 
-		// load the global data model
-		//var oModel = new sap.ui.model.json.JSONModel("model/data.json");
-		var oModel = new sap.ui.model.odata.ODataModel("http://localhost:52999/ui5training.svc");
+		var oModel = new app.courses.model.Courses();
+		oModel.setConfig(app.courses.util.Config);
+		oModel.read();
 		oView.setModel(oModel);
 
 		// set i18n model

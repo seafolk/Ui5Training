@@ -5,15 +5,22 @@ sap.ui.controller("view.CourseMaster", {
 	},
 
 	coursesItemPress: function(oEvent){
-		var context = oEvent.getSource().getBindingContext(),
-			oCourse = context.oModel.getProperty(context.sPath);
+		var context = oEvent.getSource().getBindingContext();
+			//oCourse = context.oModel.getProperty(context.sPath);
+		var index = context.sPath.split("/")[2];
 
 		this.router.navTo("course-view", {
-			courseId: oCourse.Id
+			course: index
 		});
 	},
 
 	handleNavBack : function () {
 		this.router.myNavBack("home-master", {});
+	},
+
+	courseAddPress: function(){
+		this.router.navTo("course-view", {
+			course: "new"
+		});
 	}
 });

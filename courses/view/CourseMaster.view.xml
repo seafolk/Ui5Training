@@ -1,25 +1,19 @@
-<mvc:View
-  height="100%"
-  xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m"
-  controllerName="view.CourseMaster">
-
-  <Page
-    title="Выберите курс" >
-    <headerContent>
-    </headerContent>
-    <subHeader>
-    </subHeader>
-    <content>
-
-      <List
-        items="{/Courses}" >
-        <StandardListItem title="{Name}" description="{StartDate}" type="Active" press = "coursesItemPress"/>
-      </List>
-
-    </content>
-    <footer>
-    </footer>
-  </Page>
-
+<mvc:View height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="view.CourseMaster">
+    <Page title="Выберите курс">
+        <headerContent>
+        </headerContent>
+        <subHeader>
+        </subHeader>
+        <content>
+            <List items="{/Courses}">
+                <StandardListItem title="{Name}" description="{StartDate}" type="Active" press="coursesItemPress" />
+            </List>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button text="Create" icon="sap-icon://add" press="courseAddPress" />
+            </Toolbar>
+        </footer>
+    </Page>
 </mvc:View>
