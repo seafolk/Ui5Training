@@ -7,12 +7,16 @@ UI5Training - клиентское веб-приложение, написанн
 ### Интеграция с parse.com ###
 Для запуска нужно добавить файл /courses/util/Config.js и добавить необходимые ключи к REST API
 
+```
+jQuery.sap.declare("app.courses.util.Config");
+
 app.courses.util.Config = {
     serviceHeaders: {
         "X-Parse-Application-Id": "",
         "X-Parse-REST-API-Key": ""
     }
 };
+```
 
 ### Текущий статус проекта ###
 ВНИМАНИЕ: Проект находиться в разработке и пока не готов к использованию! 
