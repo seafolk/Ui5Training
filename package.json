@@ -1,0 +1,16 @@
+{
+    "name": "Ui5Training",
+    "version": "1.0.0",
+    "description": "",
+    "keywords": [
+        "sapui5"
+    ],
+    "dependencies": {
+        "express": "*",
+        "serve-static": "*"
+    },
+    "contributors": [{
+        "name": "Serge Nikitin",
+        "email": "snikitin.me@gmail.com"
+    }]
+}
