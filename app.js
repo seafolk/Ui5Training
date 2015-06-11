@@ -14,7 +14,7 @@ app.get("/config.json", function(req, res) {
 });
 
 // Add modules
-app.use('/courses', express.static(__dirname + '/public'));
+app.use('/courses', express.static(__dirname + '/courses'));
 
 app.listen(3000);
 
