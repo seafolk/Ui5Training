@@ -13,7 +13,10 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
         var settings = {
             url: "https://api.parse.com/1/classes/" + resourseName,
             dataType: "json",
-            headers: this.config.serviceHeaders,
+            headers: {
+                "X-Parse-Application-Id": this.config.application_id,
+                "X-Parse-REST-API-Key": this.config.rest_api_key
+            },
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
             method: 'GET'

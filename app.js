@@ -1,10 +1,21 @@
-var express = require('express')
+var express = require('express');
 var path = require('path');
-var app = express()
+var config = require('./config.json');
 
-app.use('/', express.static(__dirname + '/public'));
-app.use('/sdk',express.static(path.normalize(__dirname + "/../sdk")));
+var app = express();
 
-app.listen(3000)
+app.use('/sdk', express.static(path.normalize(__dirname + "/../sdk")));
+app.get("/config.json", function(req, res) {
+    res.format({
+        'application/json': function() {
+            res.send(config);
+        }
+    });
+});
 
-console.log("Server start localhost:3000")
+// Add modules
+app.use('/courses', express.static(__dirname + '/public'));
+
+app.listen(3000);
+
+console.log("Server start localhost:3000");
