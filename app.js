@@ -4,7 +4,7 @@ var config = require('./config.json');
 
 var app = express();
 
-app.use('/sdk', express.static(path.normalize(__dirname + "/../sdk")));
+app.use('/resources', express.static(path.normalize(__dirname + config.resources_path)));
 app.get("/config.json", function(req, res) {
     res.format({
         'application/json': function() {
