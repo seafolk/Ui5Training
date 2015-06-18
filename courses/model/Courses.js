@@ -48,8 +48,18 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
 
         $.ajax(this.getQuerySettings('Courses', oData, 'post'))
             .done(function(result) {
-                me.setProperty("/Courses/" + index + "/objectId", result.objectId);
+			    me.setProperty("/Courses/" + index + "/objectId", result.objectId);
                 me.setProperty("/Courses/" + index + "/createdAt", result.createdAt);
             });
-    }
+    },
+    deleteByIndex: function(index) {
+        var me = this;
+
+        var oData = this.oData.Courses[index];
+
+        $.ajax(this.getQuerySettings('Courses', oData, 'delete'))
+            .done(function() {
+              
+            });
+    }	
 });
