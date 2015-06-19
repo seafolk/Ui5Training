@@ -5,13 +5,14 @@
         <subHeader>
         </subHeader>
         <content>
-            <List items="{/Courses}">
+            <List id = "MasterList" delete = "handleDelete" mode="None" items="{/Courses}">
                 <StandardListItem title="{Name}" description="{StartDate}" type="Active" press="coursesItemPress" />
             </List>
         </content>
         <footer>
             <Toolbar>
                 <ToolbarSpacer/>
+				<Button text="Edit" icon="sap-icon://edit" press="courseEditPress" />
                 <Button text="Create" icon="sap-icon://add" press="courseAddPress" />
             </Toolbar>
         </footer>
