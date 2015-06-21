@@ -46,10 +46,12 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
 
         var oData = this.oData.Courses[index];
 
-        $.ajax(this.getQuerySettings('Courses', oData, 'post'))
+        $.ajax(this.getQuerySettings('Courses', oData, oData.objectId ? 'put' : 'post'))
             .done(function(result) {
-			    me.setProperty("/Courses/" + index + "/objectId", result.objectId);
+			    /*me.setProperty("/Courses/" + index + "/objectId", result.objectId);
                 me.setProperty("/Courses/" + index + "/createdAt", result.createdAt);
+                */
+               me.setProperty("/Courses", data.results);
             });
     },
     deleteByIndex: function(index) {

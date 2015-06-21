@@ -5,6 +5,12 @@ sap.ui.controller("view.CourseDetail", {
     onInit: function() {
         this.router = sap.ui.core.UIComponent.getRouterFor(this);
         this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
+
+        var configModel = new sap.ui.model.json.JSONModel({
+            "isEditMode": false,
+            "isUpdateAllowed": true
+        });
+        this.getView().setModel(configModel, "config");
     },
 
     _handleRouteMatched: function(evt) {
@@ -15,8 +21,8 @@ sap.ui.controller("view.CourseDetail", {
             return;
         }
 
-        if(!this.getView().getModel().oData.Courses){
-        	return;
+        if (!this.getView().getModel().oData.Courses) {
+            return;
         }
 
         this.currentIndex = (index !== "new") ? index : this.getView().getModel().oData.Courses.length;
@@ -49,7 +55,7 @@ sap.ui.controller("view.CourseDetail", {
     },
 
     /**
-     *	DESCRIPTION FORM
+     *  DESCRIPTION FORM
      **/
     _formFragments: {},
     _getFormFragment: function(sFragmentName, sPath) {
@@ -92,15 +98,15 @@ sap.ui.controller("view.CourseDetail", {
 
     },
     handleSaveBtnPress: function() {
-        this.getView().getModel().saveByIndex( this.currentIndex );
+        this.getView().getModel().saveByIndex(this.currentIndex);
     },
     handleAddToMyCourses: function(oEvent) {
         var oCourse = this.getView().getModel().getProperty(this.getView().getBindingContext().sPath);
 
         /*
-  		TODO 
-  		добавить курс в коллекцию курсов пользователя, отправить запрос на сервер
-  	*/
+        TODO 
+        добавить курс в коллекцию курсов пользователя, отправить запрос на сервер
+    */
 
         var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
         sap.m.MessageBox.show(
@@ -116,5 +122,34 @@ sap.ui.controller("view.CourseDetail", {
                 }
             }
         );
+    },
+
+    onAddExercisesRow: function(evt) {
+        var oModel = this.getView().getModel(),
+            sPath = this.getView().getBindingContext().sPath,
+            rows = oModel.getProperty(sPath + '/Exercises') ? oModel.getProperty(sPath + '/Exercises') : [];
+
+        rows.push({
+            "Number": "",
+            "Name": "",
+            "ShortDescription": "",
+            "Duration": ""
+        });
+        oModel.setProperty(sPath + '/Exercises', rows);
+    },
+    onDeleteExercisesRow: function(evt) {
+        var oModel = this.getView().getModel(),
+            sPath = this.getView().getBindingContext().sPath,
+            items = oModel.getProperty(sPath + '/Exercises'),
+            i = evt.getSource().sId.split("driversTable-")[1]; // FIXME
+
+        items.splice(i, 1);
+        oModel.setProperty(sPath + '/Exercises', items);
+    },
+    onSetEditMode: function(){
+        this.getView().getModel("config").setProperty("/isEditMode", true);
+        
+        this.getView().byId("buttonSave").setProperty("visible", true);
+        this.getView().byId("buttonEdit").setProperty("visible", false);
     }
 });

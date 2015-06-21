@@ -1,81 +1,61 @@
-<mvc:View
-  height="100%"
-  xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m"
-  controllerName="view.CourseDetail">
-
-  <Page
-    title="Подробная информация о курсе">
-    <headerContent>
-    </headerContent>
-    <subHeader>
-    </subHeader>
-    <content>
-
-        <IconTabBar
-    class="iconTabBarPaddingTop"
-    id="idIconTabBarNoIcons"
-    expanded="{device>/isNoPhone}">
-    <items>
-      <IconTabFilter
-        id="descriptionformContainer"
-        text="Описание">
-      </IconTabFilter>
-      <IconTabFilter
-        text="Программа">
-
-         <Table id="tableExercise"
-                inset="false"
-                items="{Exercises}">
-                <columns> 
-                  <Column 
-                    width="8em"> <Text text="№" />
-                  </Column>
-                  <Column 
-                    width="8em"> <Text text="Название" />
-                  </Column>
-                  <Column 
-                    width="8em"> <Text text="Описание" />
-                  </Column>
-                  <Column 
-                    width="8em"> <Text text="Длительность" />
-                  </Column>
-                </columns>
-
+<mvc:View height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="view.CourseDetail">
+    <Page title="Подробная информация о курсе">
+        <headerContent>
+        </headerContent>
+        <subHeader>
+        </subHeader>
+        <content>
+            <IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}">
                 <items>
-                  <ColumnListItem>
-                    <cells>
-                      <Text
-                        text="{Number}" />
-                      <Text
-                        text="{Name}" />
-                      <Text
-                        text="{ShortDescription}" />
-                      <Text
-                        text="{Duration}" />
-                    </cells>
-                  </ColumnListItem>
+                    <IconTabFilter id="descriptionformContainer" text="Описание">
+                    </IconTabFilter>
+                    <IconTabFilter text="Программа">
+                        <Table id="tableExercise" inset="false" items="{Exercises}">
+                            <columns>
+                                <Column width="8em">
+                                    <Text text="№" />
+                                </Column>
+                                <Column width="8em">
+                                    <Text text="Название" />
+                                </Column>
+                                <Column width="8em">
+                                    <Text text="Описание" />
+                                </Column>
+                                <Column width="8em">
+                                    <Text text="Длительность" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="Действие" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Input text="{Number}" editable="{config>/isEditMode}" />
+                                        <Input text="{Name}" editable="{config>/isEditMode}" />
+                                        <Input text="{ShortDescription}" editable="{config>/isEditMode}" />
+                                        <Input text="{Duration}" editable="{config>/isEditMode}" />
+                                        <Button icon="sap-icon://delete" text="" press="onDeleteExercisesRow" enabled="{config>/isEditMode}" visible="{config>isUpdateAllowed}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                        <Button icon="sap-icon://create" text="Add" press="onAddExercisesRow" />
+                    </IconTabFilter>
                 </items>
-         </Table>
-         
-      </IconTabFilter>
-    </items>
-  </IconTabBar>
+            </IconTabBar>
+        </content>
+        <footer>
+            <Bar>
+                <contentRight>
+                    <Button id="buttonAddToMyCourses" text="{i18n>addToMyCourses}" press="handleAddToMyCoursesBtnPress" />
+                    <Button id="buttonSave" text="Save" type="Emphasized" visible="false" press="handleSaveBtnPress" />
+                    <Button id="buttonEdit" text="Edit" visible="{config>isUpdateAllowed}" press="onSetEditMode"  />
+<!--             <Button text="Save" type="Emphasized" visible="{config>/isEditMode}" press="handleFooterBarButtonPress" />
+            <Button text="Cancel" visible="{config>/isEditMode}" press="handleFooterBarButtonPress" /> -->
 
-    </content>
-    <footer>
-      <Bar>
-        <contentRight>
-          <Button id="buttonAddToMyCourses" text="{i18n>addToMyCourses}" press="handleAddToMyCoursesBtnPress"  />
-          <Button id="buttonSave" text="Save" type="Emphasized" visible="false" press="handleSaveBtnPress" />
-          <!-- TODO editable
-            <Button id="idButtonEdit" text="Edit" visible="false" press="handleFooterBarButtonPress"  />
-            <Button id="idButtonSave" text="Save" type="Emphasized" visible="false" press="handleFooterBarButtonPress" />
-            <Button id="idButtonCancel" text="Cancel" visible="false" press="handleFooterBarButtonPress" />
-           -->
-        </contentRight>
-      </Bar>
-    </footer>
-  </Page>
-  
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
 </mvc:View>
