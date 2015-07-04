@@ -31,10 +31,10 @@
                             <items>
                                 <ColumnListItem>
                                     <cells>
-                                        <Input text="{Number}" editable="{config>/isEditMode}" />
-                                        <Input text="{Name}" editable="{config>/isEditMode}" />
-                                        <Input text="{ShortDescription}" editable="{config>/isEditMode}" />
-                                        <Input text="{Duration}" editable="{config>/isEditMode}" />
+                                        <Input value="{Number}" editable="{config>/isEditMode}" />
+                                        <Input value="{Name}" editable="{config>/isEditMode}" />
+                                        <Input value="{ShortDescription}" editable="{config>/isEditMode}" />
+                                        <Input value="{Duration}" editable="{config>/isEditMode}" />
                                         <Button icon="sap-icon://delete" text="" press="onDeleteExercisesRow" enabled="{config>/isEditMode}" visible="{config>isUpdateAllowed}" />
                                     </cells>
                                 </ColumnListItem>

@@ -123,10 +123,12 @@ app.courses.util.Controller.extend("view.CourseDetail", {
     handleSaveBtnPress: function() {
         var sPath = this.getView().getBindingContext().sPath;
         var router = this.router;
+        var config = this.getView().getModel("config");
 
         this.getView().getModel().save(
             sPath,
             function(objectId){
+                config.setProperty("/isEditMode", false);
                 router.navTo("course-view", {
                     course: objectId
                 });
