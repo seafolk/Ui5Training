@@ -48,9 +48,9 @@ sap.ui.core.UIComponent.extend("app.courses.Component", {
         router.myNavBack = app.courses.MyRouter.myNavBack;
         router.myNavToWithoutHash = app.courses.MyRouter.myNavToWithoutHash;
 
-        if (!sap.ui.Device.system.phone) {
+/*        if (!sap.ui.Device.system.phone) {
             router.myNavToWithoutHash("view.Empty", "XML", false);
-        }
+        }*/
 
         // 4. initialize the router
         this.routeHandler = new sap.m.routing.RouteMatchedHandler(router);
@@ -86,10 +86,11 @@ sap.ui.core.UIComponent.extend("app.courses.Component", {
                 application_id: oConfig.services.parse.application_id,
                 rest_api_key: oConfig.services.parse.rest_api_key
             });
-            oModel.read();
+            oModel.read(null, function() {
+                //oEventBus.publish("Model", "InitialLoadFinished");
+                oView.setModel(oModel);
+            });
         });
-
-        oView.setModel(oModel);
 
         // set i18n model
         var i18nModel = new sap.ui.model.resource.ResourceModel({

@@ -3,6 +3,23 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
     setConfig: function(config) {
         this.config = config;
     },
+    getPathByObjectId: function(id){
+        var index = 0;
+
+        this.getProperty('/Courses').forEach(function(item, i){
+            if(id == item.objectId) index = i;
+        });
+        
+        return "/Courses/" + index;
+    },
+    createNew: function(){
+        var index = this.getProperty('/Courses').length;
+        this.setProperty("/Courses/" + index, {
+            // default values
+        });
+
+        return "/Courses/" + index;        
+    },
     getQuerySettings: function(resourseName, data, method) {
 
         if (data.objectId) {
@@ -28,7 +45,7 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
 
         return settings;
     },
-    read: function(objectId) {
+    read: function(objectId, fnCallback) {
         var me = this,
             data = {};
 
@@ -39,19 +56,20 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
         $.ajax(this.getQuerySettings('Courses', data))
             .done(function(data) {
                 me.setProperty("/Courses", data.results);
+                if(fnCallback) fnCallback.call(me);
             });
     },
-    saveByIndex: function(index) {
+    save: function(sPath, fnCallback) {
         var me = this;
 
-        var oData = this.oData.Courses[index];
+        var oData = this.getProperty(sPath);
 
         $.ajax(this.getQuerySettings('Courses', oData, oData.objectId ? 'put' : 'post'))
-            .done(function(result) {
-			    /*me.setProperty("/Courses/" + index + "/objectId", result.objectId);
-                me.setProperty("/Courses/" + index + "/createdAt", result.createdAt);
-                */
-               me.setProperty("/Courses", data.results);
+            .done(function(data) {
+                me.setProperty(sPath + "/objectId", data.objectId);
+                me.setProperty(sPath + "/createdAt", data.createdAt);
+
+                if(fnCallback) fnCallback.call(me, data.objectId);
             });
     },
     deleteByIndex: function(index) {
