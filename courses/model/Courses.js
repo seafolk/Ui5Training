@@ -3,11 +3,33 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
     setConfig: function(config) {
         this.config = config;
     },
-    getQuerySettings: function(resourseName, data, method) {
+    getPathByObjectId: function(id) {
+        var index = 0;
 
+        this.getProperty('/Courses').forEach(function(item, i) {
+            if (id == item.objectId) index = i;
+        });
+
+        return "/Courses/" + index;
+    },
+    createNew: function() {
+        var index = this.getProperty('/Courses').length;
+        this.setProperty("/Courses/" + index, {
+            // default values
+        });
+
+        return "/Courses/" + index;
+    },
+    getQuerySettings: function(resourseName, oData, method) {
+
+        var data = $.extend({}, oData);
         if (data.objectId) {
             resourseName = resourseName + "/" + data.objectId;
             delete data.objectId;
+        }
+
+        if (data.updatedAt) {
+            delete data.updatedAt;
         }
 
         var settings = {
@@ -28,7 +50,7 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
 
         return settings;
     },
-    read: function(objectId) {
+    read: function(objectId, fnCallback) {
         var me = this,
             data = {};
 
@@ -39,17 +61,20 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
         $.ajax(this.getQuerySettings('Courses', data))
             .done(function(data) {
                 me.setProperty("/Courses", data.results);
+                if (fnCallback) fnCallback.call(me);
             });
     },
-    saveByIndex: function(index) {
+    save: function(sPath, fnCallback) {
         var me = this;
 
-        var oData = this.oData.Courses[index];
+        var oData = this.getProperty(sPath);
 
-        $.ajax(this.getQuerySettings('Courses', oData, 'post'))
-            .done(function(result) {
-			    me.setProperty("/Courses/" + index + "/objectId", result.objectId);
-                me.setProperty("/Courses/" + index + "/createdAt", result.createdAt);
+        $.ajax(this.getQuerySettings('Courses', oData, oData.objectId ? 'put' : 'post'))
+            .done(function(data) {
+                if (data.objectId) me.setProperty(sPath + "/objectId", data.objectId);
+                if (data.createdAt) me.setProperty(sPath + "/createdAt", data.createdAt);
+
+                if (fnCallback) fnCallback.call(me, me.getProperty(sPath + "/objectId"));
             });
     },
     deleteByIndex: function(index) {
@@ -59,7 +84,7 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
 
         $.ajax(this.getQuerySettings('Courses', oData, 'delete'))
             .done(function() {
-              
+
             });
-    }	
+    }
 });

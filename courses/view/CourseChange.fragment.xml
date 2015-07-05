@@ -28,8 +28,12 @@
               <f:FormElement label="Level"><f:fields><Input value="{Level}" /></f:fields></f:FormElement>
               <f:FormElement label="Teacher"><f:fields><Input value="{Teacher}" /></f:fields></f:FormElement>
               <f:FormElement label="Product"><f:fields><Input value="{Product}" /></f:fields></f:FormElement>
-              <f:FormElement label="Start"><f:fields><Input value="{StartDate}" /></f:fields></f:FormElement>
-              <f:FormElement label="End"><f:fields><Input value="{EndDate}" /></f:fields></f:FormElement>
+              <f:FormElement label="Start"><f:fields>
+                <DatePicker value="{StartDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+              </f:fields></f:FormElement>
+              <f:FormElement label="End"><f:fields>
+                <DatePicker value="{EndDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+              </f:fields></f:FormElement>
             </f:formElements>
           </f:FormContainer>
         </f:formContainers>
