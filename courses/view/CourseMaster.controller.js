@@ -3,7 +3,7 @@ jQuery.sap.require("app.courses.util.Controller");
 app.courses.util.Controller.extend("view.CourseMaster", {
 
     onInit: function() {
-    	var oEventBus = this.getEventBus();
+        var oEventBus = this.getEventBus();
         this.router = sap.ui.core.UIComponent.getRouterFor(this);
 
         this.getView().byId("MasterList").attachEventOnce("updateFinished", function() {
@@ -37,15 +37,15 @@ app.courses.util.Controller.extend("view.CourseMaster", {
         var oList = oEvent.getSource(),
             oItem = oEvent.getParameter("listItem"),
             sPath = oItem.getBindingContext().getPath(),
-            index = sPath.split("/")[2],
+
             model = this.getView().getModel();
 
-        model.deleteByIndex(index);
+        model.deleteByIndex(sPath);
 
-        // send a delete request to the odata service
         oList.removeItem(oItem);
 
     },
+
 
     courseEditPress: function() {
 

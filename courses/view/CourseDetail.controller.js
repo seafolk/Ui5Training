@@ -36,9 +36,9 @@ app.courses.util.Controller.extend("view.CourseDetail", {
         }
 
         var objectId = evt.getParameter("arguments").course;
-        
+
         // FIXME не отрабатывает onMasterLoaded из-за поздней загрузки контроллера detail
-        if(this.getView().getModel()){
+        if (this.getView().getModel()) {
             this.oInitialLoadFinishedDeferred.resolve();
         }
 
@@ -127,7 +127,7 @@ app.courses.util.Controller.extend("view.CourseDetail", {
 
         this.getView().getModel().save(
             sPath,
-            function(objectId){
+            function(objectId) {
                 config.setProperty("/isEditMode", false);
                 router.navTo("course-view", {
                     course: objectId

@@ -77,14 +77,12 @@ sap.ui.model.json.JSONModel.extend("app.courses.model.Courses", {
                 if (fnCallback) fnCallback.call(me, me.getProperty(sPath + "/objectId"));
             });
     },
-    deleteByIndex: function(index) {
+    deleteByIndex: function(sPath) {
         var me = this;
 
-        var oData = this.oData.Courses[index];
+        var oData = this.getProperty(sPath);
 
-        $.ajax(this.getQuerySettings('Courses', oData, 'delete'))
-            .done(function() {
+        $.ajax(this.getQuerySettings('Courses', oData, 'delete'));
 
-            });
     }
 });
