@@ -5,7 +5,7 @@
         <subHeader>
         </subHeader>
         <content>
-            <List id = "MasterList" delete = "handleDelete" mode="None" items="{/Courses}">
+            <List id="MasterList" delete="handleDelete" mode="None" items="{/Courses}">
                 <StandardListItem title="{Name}" description="{StartDate}" type="Active" press="coursesItemPress" />
             </List>
         </content>

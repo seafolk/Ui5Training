@@ -1,41 +1,52 @@
-<core:FragmentDefinition
-  xmlns="sap.m"
-  xmlns:l="sap.ui.layout"
-  xmlns:f="sap.ui.layout.form"
-  xmlns:core="sap.ui.core">
-  <l:Grid
-    defaultSpan="L12 M12 S12"
-    hSpacing="2"
-    width="auto">
-    <l:content>
-      <f:Form id="FormDisplay354"
-        minWidth="1024"
-        maxContainerCols="2"
-        editable="false"
-        class="isReadonly">
-        <f:layout>
-          <f:ResponsiveGridLayout
-            labelSpanL="3"
-            labelSpanM="3"
-            emptySpanL="4"
-            emptySpanM="4"
-            columnsL="1"
-            columnsM="1" />
-        </f:layout>
-        <f:formContainers>
-          <f:FormContainer>
-            <f:formElements>
-              <f:FormElement label="Name"><f:fields><Text text="{Name}" /></f:fields></f:FormElement>
-              <f:FormElement label="Duration"><f:fields><Text text="{Duration}" /></f:fields></f:FormElement>
-              <f:FormElement label="Level"><f:fields><Text text="{Level}" /></f:fields></f:FormElement>
-              <f:FormElement label="Teacher"><f:fields><Text text="{Teacher/FullName}" /></f:fields></f:FormElement>
-              <f:FormElement label="Product"><f:fields><Text text="{Product}" /></f:fields></f:FormElement>
-              <f:FormElement label="Start"><f:fields><Text text="{StartDate}" /></f:fields></f:FormElement>
-              <f:FormElement label="End"><f:fields><Text text="{EndDate}" /></f:fields></f:FormElement>
-            </f:formElements>
-          </f:FormContainer>
-        </f:formContainers>
-      </f:Form>
-    </l:content>
-  </l:Grid>
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+    <l:Grid defaultSpan="L12 M12 S12" hSpacing="2" width="auto">
+        <l:content>
+            <f:Form id="FormDisplay354" minWidth="1024" maxContainerCols="2" editable="false" class="isReadonly">
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Name">
+                                <f:fields>
+                                    <Input value="{Name}" editable="{config>/isEditMode}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Duration">
+                                <f:fields>
+                                    <Input value="{Duration}" editable="{config>/isEditMode}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Level">
+                                <f:fields>
+                                    <Input value="{Level}" editable="{config>/isEditMode}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Teacher">
+                                <f:fields>
+                                    <Input value="{Teacher}" editable="{config>/isEditMode}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Product">
+                                <f:fields>
+                                    <Input value="{Product}" editable="{config>/isEditMode}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Start">
+                                <f:fields>
+                                    <DatePicker value="{StartDate}" valueFormat="yyyyMMdd" displayFormat="long" editable="{config>/isEditMode}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="End">
+                                <f:fields>
+                                    <DatePicker value="{EndDate}" valueFormat="yyyyMMdd" displayFormat="long" editable="{config>/isEditMode}"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </l:content>
+    </l:Grid>
 </core:FragmentDefinition>

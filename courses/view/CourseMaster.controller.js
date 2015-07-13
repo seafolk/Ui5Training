@@ -1,50 +1,57 @@
-sap.ui.controller("view.CourseMaster", {
+jQuery.sap.require("app.courses.util.Controller");
 
-	onInit: function(){
-		this.router = sap.ui.core.UIComponent.getRouterFor(this);
-	},
-	
-	coursesItemPress: function(oEvent){
-		var context = oEvent.getSource().getBindingContext();
-			//oCourse = context.oModel.getProperty(context.sPath);
-		var index = context.sPath.split("/")[2];
+app.courses.util.Controller.extend("view.CourseMaster", {
 
-		this.router.navTo("course-view", {
-			course: index
-		});
-	},
+    onInit: function() {
+    	var oEventBus = this.getEventBus();
+        this.router = sap.ui.core.UIComponent.getRouterFor(this);
 
-	handleNavBack : function () {
-		this.router.myNavBack("home-master", {});
-	},
-
-	courseAddPress: function(){
-		this.router.navTo("course-view", {
-			course: "new"
-		});
-	},
-	
-	handleDelete: function(oEvent) {
-		
-		var oList = oEvent.getSource(),
-			oItem = oEvent.getParameter("listItem"),
-			sPath = oItem.getBindingContext().getPath(),
-			index = sPath.split("/")[2],
-		    model = this.getView().getModel();
-		
-		model.deleteByIndex(index);
-		
-		 // send a delete request to the odata service
-        oList.removeItem(oItem);
-		
+        this.getView().byId("MasterList").attachEventOnce("updateFinished", function() {
+            oEventBus.publish("Master", "InitialLoadFinished", {
+                oList: this.getView().byId("MasterList")
+            });
+        }, this);
     },
-	
-	courseEditPress: function() {
-	
-		var oList = this.getView().byId("MasterList");
-		
-		oList.getMode() == "None" ? oList.setMode(sap.m.ListMode.Delete)
-                            		: oList.setMode(sap.m.ListMode.None);
-		
+
+    coursesItemPress: function(oEvent) {
+        var context = oEvent.getSource().getBindingContext();
+        var oCourse = context.oModel.getProperty(context.sPath);
+
+        this.router.navTo("course-view", {
+            course: oCourse.objectId
+        });
+    },
+
+    handleNavBack: function() {
+        this.router.myNavBack("home-master", {});
+    },
+
+    courseAddPress: function() {
+        this.router.navTo("course-view", {
+            course: "new"
+        });
+    },
+
+    handleDelete: function(oEvent) {
+
+        var oList = oEvent.getSource(),
+            oItem = oEvent.getParameter("listItem"),
+            sPath = oItem.getBindingContext().getPath(),
+            index = sPath.split("/")[2],
+            model = this.getView().getModel();
+
+        model.deleteByIndex(index);
+
+        // send a delete request to the odata service
+        oList.removeItem(oItem);
+
+    },
+
+    courseEditPress: function() {
+
+        var oList = this.getView().byId("MasterList");
+
+        oList.getMode() == "None" ? oList.setMode(sap.m.ListMode.Delete) : oList.setMode(sap.m.ListMode.None);
+
     }
 });
