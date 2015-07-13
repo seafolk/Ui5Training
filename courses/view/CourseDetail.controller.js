@@ -36,9 +36,9 @@ app.courses.util.Controller.extend("view.CourseDetail", {
         }
 
         var objectId = evt.getParameter("arguments").course;
-        
+
         // FIXME не отрабатывает onMasterLoaded из-за поздней загрузки контроллера detail
-        if(this.getView().getModel()){
+        if (this.getView().getModel()) {
             this.oInitialLoadFinishedDeferred.resolve();
         }
 
@@ -102,33 +102,20 @@ app.courses.util.Controller.extend("view.CourseDetail", {
         oContainer.removeAllContent();
         oContainer.insertContent(oForm);
     },
-    /* TODO
-    handleFooterBarButtonPress: function (oEvent) {
-      // Derive action from the button pressed
-      var bEditAction = /idButtonEdit$/.test(oEvent.getSource().getId()),
-        oView = this.getView();
-
-      // Show the appropriate action buttons
-      oView.byId("idButtonEdit").setVisible(!bEditAction);
-      oView.byId("idButtonSave").setVisible(bEditAction);
-      oView.byId("idButtonCancel").setVisible(bEditAction);
-
-      // Set the right form type
-      oForm = this._showFormFragment(bEditAction ? "CourseChange" : "CourseDisplay", this.getView().getBindingContext().sPath);
-    },
-    */
     handleAddToMyCoursesBtnPress: function() {
-
+        // TODO
     },
     handleSaveBtnPress: function() {
         var sPath = this.getView().getBindingContext().sPath;
         var router = this.router;
         var config = this.getView().getModel("config");
+        var oTable = this.getView().byId("tableExercise");
 
         this.getView().getModel().save(
             sPath,
-            function(objectId){
+            function(objectId) {
                 config.setProperty("/isEditMode", false);
+                oTable.setMode(sap.m.ListMode.None);
                 router.navTo("course-view", {
                     course: objectId
                 });
@@ -172,19 +159,33 @@ app.courses.util.Controller.extend("view.CourseDetail", {
         });
         oModel.setProperty(sPath + '/Exercises', rows);
     },
-    onDeleteExercisesRow: function(evt) {
-        var oModel = this.getView().getModel(),
-            sPath = this.getView().getBindingContext().sPath,
-            items = oModel.getProperty(sPath + '/Exercises'),
-            i = evt.getSource().sId.split("driversTable-")[1]; // FIXME
 
-        items.splice(i, 1);
-        oModel.setProperty(sPath + '/Exercises', items);
+    handleDeleteListItem: function(oEvent) {
+        var oList = oEvent.getSource(),
+            oItem = oEvent.getParameter("listItem"),
+            sPath = oItem.getBindingContext().getPath(),
+            oModel = this.getView().getModel();
+
+        // after deletion put the focus back to the list
+        oList.attachEventOnce("updateFinished", oList.focus, oList);
+
+        // "/Courses/2/Exercises/0"
+        var cIndex = sPath.split("/")[2];
+        var eIndex = sPath.split("/")[4];
+        
+        var data = oModel.getData();
+        var removed = data.Courses[cIndex].Exercises.splice(eIndex, 1);
+        oModel.setData(data)
+        
+        //sap.m.MessageToast.show(JSON.stringify(removed[0]) +  'is removed');
     },
+
     onSetEditMode: function() {
         this.getView().getModel("config").setProperty("/isEditMode", true);
 
         this.getView().byId("buttonSave").setProperty("visible", true);
         this.getView().byId("buttonEdit").setProperty("visible", false);
+
+        this.getView().byId("tableExercise").setMode(sap.m.ListMode.Delete)
     }
 });
